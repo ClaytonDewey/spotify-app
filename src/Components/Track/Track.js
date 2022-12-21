@@ -1,9 +1,16 @@
 import "./Track.css";
 
-const Track = ({ track }) => {
-  // const renderAction = () => {
-  //   return isRemoval ? "-" : "+";
-  // };
+const Track = ({ onAdd, track, isRemoval }) => {
+  const renderAction = () => {
+    return isRemoval ? (
+      <button className="Track-action"> - </button>
+    ) : (
+      <button onClick={() => onAdd(track)} className="Track-action">
+        {" "}
+        +{" "}
+      </button>
+    );
+  };
 
   return (
     <div className="Track">
@@ -13,7 +20,7 @@ const Track = ({ track }) => {
           {track.artist} | {track.album}
         </p>
       </div>
-      <button className="Track-action">+/-</button>
+      {renderAction()}
     </div>
   );
 };

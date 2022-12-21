@@ -16,7 +16,7 @@ const App = () => {
       id: 2,
       name: "For Whom the Bell Tolls",
       artist: "Metallica",
-      album: "Master of Puppets",
+      album: "Ride the Lightning",
     },
     {
       id: 3,
@@ -28,26 +28,33 @@ const App = () => {
 
   const [playListTracks, setPlayListTracks] = useState([
     {
-      id: 1,
-      name: "Only",
+      id: 4,
+      name: "Lone Justice",
       artist: "Anthrax",
-      album: "Sound of White Noise",
+      album: "Spreading the Disease",
     },
     {
-      id: 2,
-      name: "For Whom the Bell Tolls",
+      id: 5,
+      name: "Damage Inc.",
       artist: "Metallica",
       album: "Master of Puppets",
     },
     {
-      id: 3,
-      name: "The Conjuring",
+      id: 6,
+      name: "Mechanix",
       artist: "Megadeth",
-      album: "Peace Sells...but Who's Buying?",
+      album: "Killing Is My Business...And Business Is Good",
     },
   ]);
 
   const [playlistName, setPlaylistName] = useState("My awesome mix!");
+
+  const addTrack = (track) => {
+    if (playListTracks.find((savedTrack) => savedTrack.id === track.id)) {
+      return;
+    }
+    setPlayListTracks([...playListTracks, track]);
+  };
 
   return (
     <div>
@@ -57,10 +64,15 @@ const App = () => {
       <div className="App">
         <SearchBar />
         <div className="App-playlist">
-          <SearchResults searchResults={searchResults} />
+          <SearchResults
+            onAdd={addTrack}
+            searchResults={searchResults}
+            isRemoval={false}
+          />
           <Playlist
             playlistName={playlistName}
             playListTracks={playListTracks}
+            isRemoval={true}
           />
         </div>
       </div>

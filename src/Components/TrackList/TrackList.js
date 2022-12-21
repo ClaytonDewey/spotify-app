@@ -1,11 +1,13 @@
 import "./TrackList.css";
 import Track from "../Track/Track";
 
-const TrackList = ({ tracks }) => {
+const TrackList = ({ onAdd, tracks, isRemoval }) => {
   return (
     <div className="TrackList">
-      {tracks.map((track) => {
-        return <Track key={track.id} track={track} />;
+      {tracks.map((track, idx) => {
+        return (
+          <Track key={idx} onAdd={onAdd} track={track} isRemoval={isRemoval} />
+        );
       })}
     </div>
   );
