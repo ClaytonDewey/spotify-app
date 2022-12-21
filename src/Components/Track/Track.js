@@ -1,6 +1,10 @@
 import "./Track.css";
 
 const Track = () => {
+  // const renderAction = () => {
+  //   return isRemoval ? "-" : "+";
+  // };
+
   return (
     <div className="Track">
       <div className="Track-information">
