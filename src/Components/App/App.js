@@ -62,6 +62,10 @@ const App = () => {
     );
   };
 
+  const updatePlaylistName = (name) => {
+    setPlaylistName(name);
+  };
+
   return (
     <div>
       <h1>
@@ -76,6 +80,7 @@ const App = () => {
             isRemoval={false}
           />
           <Playlist
+            onNameChange={updatePlaylistName}
             onRemove={removeTrack}
             playlistName={playlistName}
             playListTracks={playListTracks}
