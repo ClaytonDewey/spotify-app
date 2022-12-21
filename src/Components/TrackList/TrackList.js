@@ -1,7 +1,12 @@
 import "./TrackList.css";
+import Track from "../Track/Track";
 
 const TrackList = () => {
-  return <h2>TrackList</h2>;
+  return (
+    <div className="TrackList">
+      <Track />
+    </div>
+  );
 };
 
 export default TrackList;

@@ -1,7 +1,13 @@
 import "./SearchResults.css";
+import TrackList from "../TrackList/TrackList";
 
 const SearchResults = () => {
-  return <h2>SearchResults</h2>;
+  return (
+    <div className="SearchResults">
+      <h2>Results</h2>
+      <TrackList />
+    </div>
+  );
 };
 
 export default SearchResults;
