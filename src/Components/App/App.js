@@ -1,9 +1,30 @@
+import { useState } from "react";
 import "./App.css";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
 
 const App = () => {
+  const [searchResults, setSearchResults] = useState([
+    {
+      id: 1,
+      name: "Only",
+      artist: "Anthrax",
+      album: "Sound of White Noise",
+    },
+    {
+      id: 2,
+      name: "For Whom the Bell Tolls",
+      artist: "Metallica",
+      album: "Master of Puppets",
+    },
+    {
+      id: 3,
+      name: "The Conjuring",
+      artist: "Megadeth",
+      album: "Peace Sells...but Who's Buying?",
+    },
+  ]);
   return (
     <div>
       <h1>
@@ -12,7 +33,7 @@ const App = () => {
       <div className="App">
         <SearchBar />
         <div className="App-playlist">
-          <SearchResults />
+          <SearchResults searchResults={searchResults} />
           <Playlist />
         </div>
       </div>

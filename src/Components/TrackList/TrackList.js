@@ -1,10 +1,12 @@
 import "./TrackList.css";
 import Track from "../Track/Track";
 
-const TrackList = () => {
+const TrackList = ({ tracks }) => {
   return (
     <div className="TrackList">
-      <Track />
+      {tracks.map((track) => {
+        return <Track key={track.id} track={track} />;
+      })}
     </div>
   );
 };
