@@ -66,6 +66,10 @@ const App = () => {
     setPlaylistName(name);
   };
 
+  const savePlaylist = () => {
+    console.log(playListTracks);
+  };
+
   return (
     <div>
       <h1>
@@ -80,6 +84,7 @@ const App = () => {
             isRemoval={false}
           />
           <Playlist
+            onSave={savePlaylist}
             onNameChange={updatePlaylistName}
             onRemove={removeTrack}
             playlistName={playlistName}
