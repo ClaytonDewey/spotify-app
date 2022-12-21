@@ -56,6 +56,12 @@ const App = () => {
     setPlayListTracks([...playListTracks, track]);
   };
 
+  const removeTrack = (track) => {
+    setPlayListTracks(
+      playListTracks.filter((savedTrack) => savedTrack.id !== track.id)
+    );
+  };
+
   return (
     <div>
       <h1>
@@ -70,6 +76,7 @@ const App = () => {
             isRemoval={false}
           />
           <Playlist
+            onRemove={removeTrack}
             playlistName={playlistName}
             playListTracks={playListTracks}
             isRemoval={true}
