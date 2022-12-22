@@ -9,10 +9,8 @@ Spotify.getAccessToken();
 
 const App = () => {
   const [searchResults, setSearchResults] = useState([]);
-
   const [playListTracks, setPlayListTracks] = useState([]);
-
-  const [playlistName, setPlaylistName] = useState("My awesome mix!");
+  const [playlistName, setPlaylistName] = useState("New Playlist");
 
   const addTrack = (track) => {
     if (playListTracks.find((savedTrack) => savedTrack.id === track.id)) {
@@ -32,7 +30,12 @@ const App = () => {
   };
 
   const savePlaylist = () => {
-    console.log(playListTracks);
+    const trackUris = playListTracks.map((playlistTrack) => playlistTrack.uri);
+    Spotify.savePlaylist(playlistName, trackUris).then(() => {
+      setSearchResults([]);
+      setPlayListTracks([]);
+      setPlaylistName("New Playlist");
+    });
   };
 
   const search = (term) => {
