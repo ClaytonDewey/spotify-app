@@ -3,49 +3,14 @@ import "./App.css";
 import SearchBar from "../SearchBar/SearchBar";
 import SearchResults from "../SearchResults/SearchResults";
 import Playlist from "../Playlist/Playlist";
+import Spotify from "../../util/Spotify";
+
+Spotify.getAccessToken();
 
 const App = () => {
-  const [searchResults, setSearchResults] = useState([
-    {
-      id: 1,
-      name: "Only",
-      artist: "Anthrax",
-      album: "Sound of White Noise",
-    },
-    {
-      id: 2,
-      name: "For Whom the Bell Tolls",
-      artist: "Metallica",
-      album: "Ride the Lightning",
-    },
-    {
-      id: 3,
-      name: "The Conjuring",
-      artist: "Megadeth",
-      album: "Peace Sells...but Who's Buying?",
-    },
-  ]);
+  const [searchResults, setSearchResults] = useState([]);
 
-  const [playListTracks, setPlayListTracks] = useState([
-    {
-      id: 4,
-      name: "Lone Justice",
-      artist: "Anthrax",
-      album: "Spreading the Disease",
-    },
-    {
-      id: 5,
-      name: "Damage Inc.",
-      artist: "Metallica",
-      album: "Master of Puppets",
-    },
-    {
-      id: 6,
-      name: "Mechanix",
-      artist: "Megadeth",
-      album: "Killing Is My Business...And Business Is Good",
-    },
-  ]);
+  const [playListTracks, setPlayListTracks] = useState([]);
 
   const [playlistName, setPlaylistName] = useState("My awesome mix!");
 
@@ -71,7 +36,7 @@ const App = () => {
   };
 
   const search = (term) => {
-    console.log(term);
+    Spotify.search(term).then((results) => setSearchResults(results));
   };
 
   return (
