@@ -22,6 +22,32 @@ const Spotify = {
       window.location = spotify_url;
     }
   },
+
+  search(term) {
+    const search_url = `https://api.spotify.com/v1/search?type=track&q=${term.replace(
+      " ",
+      "%20"
+    )}`;
+
+    return fetch(search_url, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+      },
+    })
+      .then((response) => response.json())
+      .then((jsonResponse) => {
+        if (!jsonResponse.tracks) return [];
+
+        return jsonResponse.tracks.items.map((track) => ({
+          id: track.id,
+          name: track.name,
+          artist: track.artist,
+          album: track.album,
+          image: track.album.images[2],
+          uri: track.uri,
+        }));
+      });
+  },
 };
 
 export default Spotify;
